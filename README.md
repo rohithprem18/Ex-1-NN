@@ -1,6 +1,6 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
-<H3>EX. NO.1</H3>
+<H3>NAME       : ROHITH PREM S</H3>
+<H3>REGISTER NO:212223040172</H3>
+<H3>EX.NO:1</H3>
 <H3>DATE</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
@@ -37,11 +37,65 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+```py
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+
+data = pd.read_csv("Churn_Modelling.csv")
+data
+data.head()
+
+X=data.iloc[:,:-1].values
+X
+
+y=data.iloc[:,-1].values
+y
+
+data.isnull().sum()
+
+data.duplicated()
+
+data.describe()
+
+data = data.drop(['Surname', 'Geography','Gender'], axis=1)
+data.head()
+
+scaler=MinMaxScaler()
+df1=pd.DataFrame(scaler.fit_transform(data))
+print(df1)
+
+X_train ,X_test ,y_train,y_test=train_test_split(X,y,test_size=0.2)
+
+X_train
+
+X_test
+
+print("Lenght of X_test ",len(X_test))
 
 
+```
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+### Dataset:
+![data](https://github.com/user-attachments/assets/709838f4-8457-40f6-b150-3d37ce2c87f5)
+### X Values:
+![x_values](https://github.com/user-attachments/assets/ac2b083a-cfc9-4222-bf87-4707c09f9ce9)
+### Y Values:
+![y_values](https://github.com/user-attachments/assets/cc6efb52-6dce-41e3-9a6f-01090eb5701a)
+### Null Values:
+![null_values](https://github.com/user-attachments/assets/05515a34-5aa6-443e-9b51-02555994d936)
+### Duplicated Values:
+![duplicated_values](https://github.com/user-attachments/assets/d57d824b-6274-4360-aae8-9cfb883df703)
+### Description:
+![describe](https://github.com/user-attachments/assets/fe382f8a-af10-4962-9c61-64c58dfc4f56)
+### Normalized Dataset:
+![normalized](https://github.com/user-attachments/assets/eeced402-a849-4a42-9eee-05e13338f266)
+### Training Data:
+![training ](https://github.com/user-attachments/assets/45ce88d9-6831-4d96-85d5-20f1c99d214b)
+### Testing Data:
+![test](https://github.com/user-attachments/assets/2454f35a-3bed-43e7-a194-f8822e4d71c7)
 
 
 ## RESULT:
